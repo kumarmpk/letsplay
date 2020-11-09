@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_to_sign_up"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.letsplay.fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.letsplay.fragments.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUp_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.example.letsplay.fragments.SignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signIn_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_signIn_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
+        <action
+            android:id="@+id/action_signIn_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.example.letsplay.fragments.ForgotPassword"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPassword_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.letsplay.fragments.HomeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreen_to_create"
+            app:destination="@id/create" />
+        <action
+            android:id="@+id/action_homeScreen_self"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_homeScreen_to_view"
+            app:destination="@id/view" />
+    </fragment>
+    <fragment
+        android:id="@+id/create"
+        android:name="com.example.letsplay.fragments.Create"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_create_to_homeScreen"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_create_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_create_to_view"
+            app:destination="@id/view" />
+        <action
+            android:id="@+id/action_create_self"
+            app:destination="@id/create" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.letsplay.fragments.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_homeScreen"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_profile_to_create"
+            app:destination="@id/create" />
+        <action
+            android:id="@+id/action_profile_to_view"
+            app:destination="@id/view" />
+        <action
+            android:id="@+id/action_profile_self"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/view"
+        android:name="com.example.letsplay.fragments.View"
+        android:label="fragment_view"
+        tools:layout="@layout/fragment_view" >
+        <action
+            android:id="@+id/action_view_to_homeScreen"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_view_to_create"
+            app:destination="@id/create" />
+        <action
+            android:id="@+id/action_view_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_view_self"
+            app:destination="@id/view" />
+    </fragment>
+</navigation>
