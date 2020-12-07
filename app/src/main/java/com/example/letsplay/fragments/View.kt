@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
-import com.example.letsplay.validation.Validation
+import com.example.letsplay.common.Validation
 
 class View : Fragment() {
 
@@ -47,8 +47,8 @@ class View : Fragment() {
             val validation = Validation()
             if(validation.inputValidation(view, requireContext(), list)) {
                 validation.createSuccessToast("Event is updated successfully", requireContext())
+                findNavController().navigate(R.id.action_view_to_homeScreen)
             }
-            findNavController().navigate(R.id.action_view_to_homeScreen)
         }
         view.findViewById<Button>(R.id.cancel).setOnClickListener{
             findNavController().navigate(R.id.action_view_to_homeScreen)

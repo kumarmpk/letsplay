@@ -18,7 +18,7 @@
     <string name="sign_in">Sign In</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="account_recovery">Account Recovery</string>
-    <string name="security_code">Security Code*</string>
+    <string name="security_question">Security Question*</string>
     <string name="new_password">New Password*</string>
     <string name="reset">Reset</string>
     <string name="home_screen">Home Screen</string>
@@ -29,9 +29,9 @@
     <string name="home">Home</string>
     <string name="update_profile">Update Profile</string>
     <string name="create_an_event">Create an Event</string>
-    <string name="date">Pick a Date for the event</string>
-    <string name="time">Time</string>
-    <string name="place">Place</string>
+    <string name="date">Pick a Date*</string>
+    <string name="time">Time*</string>
+    <string name="place">Place*</string>
     <string name="view_join_the_event">View/Join the Event</string>
     <string name="update">Update</string>
     <string name="join">Join</string>
@@ -40,4 +40,33 @@
     <string name="joiners">joiners</string>
     <string name="comments">Comments</string>
     <string name="profile">Profile</string>
+    <string name="events">Events</string>
+    <string name="user_name">User Name*</string>
+
+    <string-array name="sports1">
+        <item>Select a sport*</item>
+        <item>Soccer</item>
+        <item>Cricket</item>
+        <item>Baseball</item>
+        <item>Badminton</item>
+        <item>Sking</item>
+        <item>Skating</item>
+    </string-array>
+
+    <string-array name="sports">
+        <item>Select a sport</item>
+        <item>Soccer</item>
+        <item>Cricket</item>
+        <item>Baseball</item>
+        <item>Badminton</item>
+        <item>Sking</item>
+        <item>Skating</item>
+    </string-array>
+    <string-array name="securityQuestions">
+        <item>Select a security question*</item>
+        <item>What is your birthplace?</item>
+        <item>When did you graduate high school?</item>
+        <item>What is primary school name?</item>
+    </string-array>
+    <string name="security_answer">Security Answer*</string>
 </resources>

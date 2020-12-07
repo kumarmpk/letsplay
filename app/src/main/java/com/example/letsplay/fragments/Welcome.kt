@@ -1,5 +1,6 @@
 package com.example.letsplay.fragments
 
+import CreateUserObject
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,23 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
-import com.example.letsplay.validation.Validation
+import com.example.letsplay.common.Constants
+import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.common.Validation
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class WelcomeFragment : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = Firebase.auth
     }
 
     override fun onCreateView(
@@ -38,15 +47,30 @@ class WelcomeFragment : Fragment() {
             if(validator.inputValidation(view, context, list)
                 && validator.isEmailValid(R.id.emailAddress, view, context)) {
 
-                /*val email : String = view.findViewById<TextInputLayout>(R.id.emailAddress).editText?.text.toString()
-                val emailMap = Bundle()
-                emailMap.putString("emailAddress", email)
-                val nextFragment = SignUp()
-                nextFragment.setArguments(emailMap)
+                val email : String = view.findViewById<TextInputLayout>(R.id.emailAddress).editText?.text.toString()
+                LoggedInUserDtls.emailAddress = email
 
-                fragmentManager?.beginTransaction()?.add(R.id.container, fragment)?.commit();*/
+                FirebaseFirestore.getInstance().collection(Constants.COLLECTION_USERS)
+                    .document(email).get().addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            document?.data?.forEach { item ->
+                                if(item.key.equals("emailAddress") && item.value.equals(email)){
+                                    validator.createSuccessToast("Email Address is already registered. Kindly login to use the app.", requireContext())
+                                    var createObj = CreateUserObject()
+                                    LoggedInUserDtls.loggedInUser = createObj.createUserObjectFromDocumentSnapShot(document)
+                                    LoggedInUserDtls.loggedInUser!!.newUser = false
+                                    findNavController().navigate(R.id.action_welcomeFragment_to_signIn)
+                                }
+                            }
 
-                findNavController().navigate(R.id.action_welcomeFragment_to_signUp)
+                        } else {
+                            validator.createSuccessToast("New user. Kindly register to use the app.", requireContext())
+                            findNavController().navigate(R.id.action_welcomeFragment_to_signUp)
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        validator.createErrorToast("Application faced unexpected exception. Please contact support team.", requireContext())
+                    }
             }
         }
     }

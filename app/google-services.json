@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "662822270529",
+    "firebase_url": "https://lets-play-7313c.firebaseio.com",
+    "project_id": "lets-play-7313c",
+    "storage_bucket": "lets-play-7313c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662822270529:android:202a0f9d1dc3a7d61c78c0",
+        "android_client_info": {
+          "package_name": "com.example.letsplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662822270529-pp6a3l4fj48eufqmavfqo3d9krijepju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAT-SzSlK740gsC_UATIaC25xcBZSKW7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662822270529-pp6a3l4fj48eufqmavfqo3d9krijepju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

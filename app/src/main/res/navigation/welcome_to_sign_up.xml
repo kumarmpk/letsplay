@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_signUp"
             app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
     <fragment
         android:id="@+id/signUp"
@@ -25,6 +28,9 @@
         <action
             android:id="@+id/action_signUp_to_signIn"
             app:destination="@id/signIn" />
+        <action
+            android:id="@+id/action_signUp_to_homeScreen"
+            app:destination="@id/homeScreen" />
     </fragment>
     <fragment
         android:id="@+id/signIn"
@@ -40,6 +46,9 @@
         <action
             android:id="@+id/action_signIn_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_signIn_to_signUp"
+            app:destination="@id/signUp" />
     </fragment>
     <fragment
         android:id="@+id/forgotPassword"
@@ -65,8 +74,11 @@
             android:id="@+id/action_homeScreen_to_profile"
             app:destination="@id/profile" />
         <action
-            android:id="@+id/action_homeScreen_to_view"
-            app:destination="@id/view" />
+            android:id="@+id/action_homeScreen_to_showAllEvents"
+            app:destination="@id/showAllEvents" />
+        <action
+            android:id="@+id/action_homeScreen_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
     <fragment
         android:id="@+id/create"
@@ -80,11 +92,14 @@
             android:id="@+id/action_create_to_profile"
             app:destination="@id/profile" />
         <action
-            android:id="@+id/action_create_to_view"
-            app:destination="@id/view" />
-        <action
             android:id="@+id/action_create_self"
             app:destination="@id/create" />
+        <action
+            android:id="@+id/action_create_to_showAllEvents"
+            app:destination="@id/showAllEvents" />
+        <action
+            android:id="@+id/action_create_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -98,11 +113,14 @@
             android:id="@+id/action_profile_to_create"
             app:destination="@id/create" />
         <action
-            android:id="@+id/action_profile_to_view"
-            app:destination="@id/view" />
-        <action
             android:id="@+id/action_profile_self"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_profile_to_showAllEvents"
+            app:destination="@id/showAllEvents" />
+        <action
+            android:id="@+id/action_profile_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
     <fragment
         android:id="@+id/view"
@@ -113,13 +131,22 @@
             android:id="@+id/action_view_to_homeScreen"
             app:destination="@id/homeScreen" />
         <action
-            android:id="@+id/action_view_to_create"
-            app:destination="@id/create" />
+            android:id="@+id/action_view_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAllEvents"
+        android:name="com.example.letsplay.fragments.ShowAllEvents"
+        android:label="fragment_show_all_events"
+        tools:layout="@layout/fragment_show_all_events" >
         <action
-            android:id="@+id/action_view_to_profile"
-            app:destination="@id/profile" />
+            android:id="@+id/action_showAllEvents_self"
+            app:destination="@id/showAllEvents" />
         <action
-            android:id="@+id/action_view_self"
+            android:id="@+id/action_showAllEvents_to_view"
             app:destination="@id/view" />
+        <action
+            android:id="@+id/action_showAllEvents_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
 </navigation>

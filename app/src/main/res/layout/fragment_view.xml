@@ -28,7 +28,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextTextSport"
+        android:id="@+id/sport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -68,8 +68,8 @@
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:hintTextColor="#232222"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextSport"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextSport">
+        app:layout_constraintStart_toEndOf="@+id/sport"
+        app:layout_constraintTop_toBottomOf="@+id/sport">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextTextTime"
+        android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -103,7 +103,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextTextPlace"
+        android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -118,8 +118,8 @@
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:hintTextColor="#232222"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextTime"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextTime">
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/time">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPlace">
+        app:layout_constraintTop_toBottomOf="@+id/place">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPlace" />
+                app:layout_constraintTop_toBottomOf="@+id/place" />
 
             <TextView
                 android:id="@+id/joiners"
@@ -173,7 +173,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/responded" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/comments"
                 android:layout_width="match_parent"
                 android:layout_height="68dp"
                 android:hint="@string/comments"
@@ -196,7 +196,7 @@
                 android:textColor="#000000"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+                app:layout_constraintTop_toBottomOf="@+id/comments" />
 
             <Button
                 android:id="@+id/reject"
@@ -210,10 +210,10 @@
                 android:textColor="#000000"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+                app:layout_constraintTop_toBottomOf="@+id/comments" />
 
             <Button
-                android:id="@+id/Update"
+                android:id="@+id/update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="75dp"

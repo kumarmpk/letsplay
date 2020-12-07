@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
-import com.example.letsplay.validation.Validation
+import com.example.letsplay.common.Validation
 
 class Profile : Fragment() {
 
