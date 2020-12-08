@@ -1,6 +1,5 @@
 package com.example.letsplay.fragments
 
-import CreateUserObject
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
 import com.example.letsplay.common.Constants
 import com.example.letsplay.common.Validation
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,7 +42,7 @@ class ForgotPassword : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val emailTextInputEditText = view.findViewById<TextInputEditText>(R.id.emailAddressTextInputEditText)
-        emailTextInputEditText?.setText(LoggedInUserDtls.emailAddress)
+        emailTextInputEditText?.setText(SessionDtls.loggedInUser?.emailAddress)
 
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<Button>(R.id.reset).setOnClickListener{
@@ -69,7 +68,7 @@ class ForgotPassword : Fragment() {
                 && validation.inputValidation(view, requireContext(), list3)) {
 
                 val emailTextInputEditText = view.findViewById<TextInputEditText>(R.id.emailAddressTextInputEditText).text.toString()
-                var user = LoggedInUserDtls.loggedInUser
+                var user = SessionDtls.loggedInUser
 
                 if(user?.emailAddress?.equals(emailTextInputEditText)!!){
 

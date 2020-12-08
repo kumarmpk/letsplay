@@ -4,11 +4,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.letsplay.R
 import com.example.letsplay.models.EventInfo
+import com.example.letsplay.models.SessionDtls
+import androidx.navigation.fragment.findNavController
+import com.example.letsplay.fragments.ShowAllEvents
+import com.example.letsplay.fragments.ViewEvent
 
-class EventsRecyclerAdapter(private val events : List<EventInfo>) : RecyclerView.Adapter<EventsRecyclerAdapter.ViewHolder>() {
+class EventsRecyclerAdapter(private val events : List<EventInfo>,
+                            private val clickListener: OnItemClickListener)
+    : RecyclerView.Adapter<EventsRecyclerAdapter.ViewHolder>() {
+
+    private var listener: OnItemClickListener? = null
+
+    init {
+        this.listener = clickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -21,12 +35,7 @@ class EventsRecyclerAdapter(private val events : List<EventInfo>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val event : EventInfo = events[position]
-        holder.eventSport?.text = event.sport
-        holder.eventDate?.text = event.date
-        holder.eventTime?.text = event.time
-        holder.eventPlace?.text = event.place
-        holder.eventPosition = position
+        holder.bind(events[position], listener)
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -34,7 +43,18 @@ class EventsRecyclerAdapter(private val events : List<EventInfo>) : RecyclerView
         val eventDate = itemView.findViewById<TextView>(R.id.eventDateTextView)
         val eventTime = itemView.findViewById<TextView>(R.id.eventTimeTextView)
         val eventPlace = itemView.findViewById<TextView>(R.id.eventPlaceTextView)
-        var eventPosition = 0
+
+        fun bind(event : EventInfo, listener: OnItemClickListener?){
+            eventSport.text = event.sport
+            eventDate.text = event.date
+            eventTime.text = event.time
+            eventPlace.text = event.place
+            itemView.setOnClickListener { listener!!.onItemClick(event) }
+        }
     }
 
+}
+
+interface OnItemClickListener {
+    fun onItemClick(item: EventInfo?)
 }

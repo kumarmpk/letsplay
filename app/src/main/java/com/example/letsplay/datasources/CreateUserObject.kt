@@ -2,7 +2,7 @@ import androidx.appcompat.widget.AppCompatSpinner
 import com.example.letsplay.R
 import com.example.letsplay.common.Constants
 import com.example.letsplay.models.LetsPlayUser
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.DocumentSnapshot
 import android.view.View
@@ -42,8 +42,8 @@ class CreateUserObject{
     public fun createUserObjectFromView( view : View ) : LetsPlayUser{
 
         val userName = view.findViewById<TextInputLayout>(R.id.userNameTextLayout).editText?.text.toString()
-        LoggedInUserDtls.userName = userName
-        val emailStr = LoggedInUserDtls.emailAddress
+        SessionDtls.loggedInUser?.userName = userName
+        val emailStr = SessionDtls.loggedInUser?.emailAddress
         val password = view.findViewById<TextInputLayout>(R.id.password).editText?.text.toString()
         val securityQuestion = view.findViewById<AppCompatSpinner>(R.id.securityQuestion)
         val securityQuestionStr = securityQuestion.getItemAtPosition(securityQuestion.selectedItemPosition).toString()

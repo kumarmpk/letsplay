@@ -1,5 +1,6 @@
 package com.example.letsplay.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
 import com.example.letsplay.common.Validation
 
-class View : Fragment() {
+class ViewEvent : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -25,16 +26,29 @@ class View : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view, container, false)
+        val view = inflater.inflate(R.layout.fragment_view, container, false)
+
+        /*var cusSupportManager = activity?.supportFragmentManager
+        if (cusSupportManager != null) {
+            var fragments = cusSupportManager?.fragments
+
+            if(fragments != null && fragments.size > 1){
+                val showAllId = cusSupportManager?.findFragmentById(R.id.ShowAllEventsConstraintLayout)
+                if(showAllId != null){
+                    cusSupportManager.beginTransaction().remove(showAllId).commit()
+                }
+            }
+        }*/
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.join).setOnClickListener{
+        view.findViewById<Button>(R.id.interested).setOnClickListener{
             findNavController().navigate(R.id.action_view_to_homeScreen)
         }
-        view.findViewById<Button>(R.id.reject).setOnClickListener{
+        view.findViewById<Button>(R.id.declined).setOnClickListener{
             findNavController().navigate(R.id.action_view_to_homeScreen)
         }
         view.findViewById<Button>(R.id.update).setOnClickListener{

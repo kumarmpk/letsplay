@@ -5,22 +5,21 @@ import android.widget.EditText
 import android.widget.Spinner
 import com.example.letsplay.R
 import com.example.letsplay.models.EventInfo
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import com.google.android.material.textfield.TextInputLayout
-import java.sql.Timestamp
 
 class CreateEventObject {
 
-    public fun createEventFromView(view : View, date : String?, startTime : String?) : EventInfo{
+    public fun createEventFromView(view : View, date : String?, startTime : String?,
+            timeStamp : String) : EventInfo{
 
         val comments = view.findViewById<EditText>(R.id.comments).text.toString()
         val sport = view.findViewById<Spinner>(R.id.sport)
         val sportStr = sport.getItemAtPosition(sport.selectedItemPosition).toString()
         val place = view.findViewById<TextInputLayout>(R.id.place).editText?.text.toString()
-        var timeStamp = System.currentTimeMillis()
         var id = sportStr + "_" + timeStamp
-        val createdUserEmail = LoggedInUserDtls.loggedInUser?.emailAddress
-        val createdUserName = LoggedInUserDtls.loggedInUser?.userName
+        val createdUserEmail = SessionDtls.loggedInUser?.emailAddress
+        val createdUserName = SessionDtls.loggedInUser?.userName
 
         return EventInfo(
             id,
@@ -32,11 +31,12 @@ class CreateEventObject {
             createdUserEmail,
             createdUserName,
             null,
-            null
+            null,
+            timeStamp
         )
     }
 
-    public fun createEventFromDocData(docData: MutableMap<String, Any>) : EventInfo{
+    fun createEventFromDocData(docData: MutableMap<String, Any>) : EventInfo{
 
         var comments : String? = null
         var sport : String? = null
@@ -45,9 +45,10 @@ class CreateEventObject {
         var place : String? = null
         var createdByEmailAddress : String? = null
         var createdByUserName : String? = null
-        var joinedBy : List<Any?>? = null
-        var rejectedBy : List<Any?>? = null
+        var interestedList : String? = null
+        var declinedList : String? = null
         var id = ""
+        var timeStamp = ""
 
         docData.forEach { it ->
             when {
@@ -63,14 +64,23 @@ class CreateEventObject {
                         createdByUserName = it.value.toString()
                     }
                 }
-                it.key.equals("joinedBy") -> joinedBy = listOf(it.value)
-                it.key.equals("rejectedBy") -> rejectedBy = listOf(it.value)
+                it.key.equals("interestedList") -> {
+                    if(it.value != null) {
+                        interestedList = it.value as String
+                    }
+                }
+                it.key.equals("declinedList") -> {
+                    if(it.value != null) {
+                        declinedList = it.value as String
+                    }
+                }
+                it.key.equals("timeStamp") -> timeStamp = it.value as String
             }
         }
 
         return EventInfo(
             id, sport, date, time, place, comments, createdByEmailAddress, createdByUserName,
-            joinedBy as List<String?>?, rejectedBy as List<String?>?
+            interestedList, declinedList, timeStamp
         )
     }
 

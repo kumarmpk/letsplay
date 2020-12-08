@@ -9,16 +9,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.Toast
-import androidx.appcompat.widget.AppCompatSpinner
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
 import com.example.letsplay.common.Constants
 import com.example.letsplay.common.Validation
-import com.example.letsplay.models.LetsPlayUser
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUp : Fragment() {
@@ -67,7 +63,7 @@ class SignUp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var emailTextInputEditText = view.findViewById<TextInputEditText>(R.id.emailAddressEditText)
-        emailTextInputEditText?.setText(LoggedInUserDtls.emailAddress)
+        emailTextInputEditText?.setText(SessionDtls.loggedInUser?.emailAddress)
 
         view.findViewById<Button>(R.id.sign_up).setOnClickListener{
             val list = ArrayList<Int>()

@@ -9,6 +9,7 @@ data class EventInfo(
     var comments: String?,
     var createdByEmailAddress:String?,
     var createdByUserName:String?,
-    var joinedBy: List<String?>?,
-    var rejectedBy:List<String?>?
+    var interestedList: String?,
+    var declinedList: String?,
+    var timeStamp : String
 )

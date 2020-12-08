@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
 import com.example.letsplay.common.Constants
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import com.example.letsplay.common.Validation
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -48,7 +48,7 @@ class WelcomeFragment : Fragment() {
                 && validator.isEmailValid(R.id.emailAddress, view, context)) {
 
                 val email : String = view.findViewById<TextInputLayout>(R.id.emailAddress).editText?.text.toString()
-                LoggedInUserDtls.emailAddress = email
+                SessionDtls.loggedInUser?.emailAddress = email
 
                 FirebaseFirestore.getInstance().collection(Constants.COLLECTION_USERS)
                     .document(email).get().addOnSuccessListener { document ->
@@ -57,8 +57,8 @@ class WelcomeFragment : Fragment() {
                                 if(item.key.equals("emailAddress") && item.value.equals(email)){
                                     validator.createSuccessToast("Email Address is already registered. Kindly login to use the app.", requireContext())
                                     var createObj = CreateUserObject()
-                                    LoggedInUserDtls.loggedInUser = createObj.createUserObjectFromDocumentSnapShot(document)
-                                    LoggedInUserDtls.loggedInUser!!.newUser = false
+                                    SessionDtls.loggedInUser = createObj.createUserObjectFromDocumentSnapShot(document)
+                                    SessionDtls.loggedInUser!!.newUser = false
                                     findNavController().navigate(R.id.action_welcomeFragment_to_signIn)
                                 }
                             }

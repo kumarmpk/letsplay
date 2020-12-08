@@ -37,7 +37,8 @@
     <string name="join">Join</string>
     <string name="reject">Reject</string>
     <string name="responded">Responded</string>
-    <string name="joiners">joiners</string>
+    <string name="interested">Interested</string>
+    <string name="declined">Declined</string>
     <string name="comments">Comments</string>
     <string name="profile">Profile</string>
     <string name="events">Events</string>

@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.*
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.models.SessionDtls
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 
 class HomeScreen : Fragment() {
@@ -59,9 +58,7 @@ class HomeScreen : Fragment() {
                     true
                 }
                 R.id.log_out_menu -> {
-                    LoggedInUserDtls.userName = ""
-                    LoggedInUserDtls.emailAddress = ""
-                    LoggedInUserDtls.isLoggedIn = false
+                    SessionDtls.loggedInUser = null
                     findNavController().navigate(R.id.action_homeScreen_to_signIn)
                     true
                 }

@@ -12,8 +12,7 @@ import com.example.letsplay.R
 import com.example.letsplay.common.Constants
 import com.example.letsplay.common.Validation
 import com.example.letsplay.datasources.CreateEventObject
-import com.example.letsplay.models.EventInfo
-import com.example.letsplay.models.LoggedInUserDtls
+import com.example.letsplay.datasources.EventDao
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_create.*
@@ -77,17 +76,13 @@ class Create : Fragment() {
             if(validation.inputValidationSpinner(view, requireContext(), spinnerList)
                 && validation.inputValidationStr(view, requireContext(), list)) {
 
+                var timeStamp = System.currentTimeMillis().toString()
                 val createEvent = CreateEventObject()
-                val eventInfo = createEvent.createEventFromView(view, date, startTime)
+                val eventInfo = createEvent.createEventFromView(view, date, startTime, timeStamp)
+                val eventDao = EventDao()
+                eventDao.saveEvent(eventInfo, requireContext(), findNavController(),
+                    "Event created successfully.", R.id.action_create_to_homeScreen)
 
-                FirebaseFirestore.getInstance().collection(Constants.EVENTS)
-                    .document(eventInfo.id).set(eventInfo)
-                    .addOnSuccessListener {
-                        validation.createSuccessToast("Event is created successfully", requireContext())
-                        findNavController().navigate(R.id.action_create_to_homeScreen)
-                    }.addOnFailureListener {
-                        validation.createErrorToast("Application faced unexpected Exception. Kindly contact support team", requireContext())
-                    }
             }
         }
 
