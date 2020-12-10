@@ -48,7 +48,12 @@ class EventsRecyclerAdapter(private val events : List<EventInfo>,
             eventSport.text = event.sport
             eventDate.text = event.date
             eventTime.text = event.time
-            eventPlace.text = event.place
+            if(event.place == null || event.place!!.trim() == ""){
+                eventPlace.text = "Link is provided inside."
+            } else{
+                eventPlace.text = event.place
+            }
+
             itemView.setOnClickListener { listener!!.onItemClick(event) }
         }
     }

@@ -46,10 +46,9 @@
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="30dp"
                 android:ems="10"
-                android:hint="@string/date"
+                android:hint="Date: "
                 android:inputType="text"
                 android:textColorHint="#000000"
-                app:endIconMode="clear_text"
                 app:endIconTint="#1B1818"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:hintTextColor="#232222"
@@ -71,10 +70,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="30dp"
                 android:ems="10"
-                android:hint="@string/time"
+                android:hint="Time: "
                 android:inputType="text"
                 android:textColorHint="#000000"
-                app:endIconMode="clear_text"
                 app:endIconTint="#1B1818"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:hintTextColor="#232222"
@@ -113,6 +111,19 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/placeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/andika"
+                android:text="Click to open the location"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/place" />
+
             <TextView
                 android:id="@+id/interested"
                 android:layout_width="wrap_content"
@@ -123,7 +134,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/place" />
+                app:layout_constraintTop_toBottomOf="@+id/placeBtn" />
 
             <TextView
                 android:id="@+id/interestedCount"
@@ -134,7 +145,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/interested"
-                app:layout_constraintTop_toBottomOf="@+id/place" />
+                app:layout_constraintTop_toBottomOf="@+id/placeBtn" />
 
             <TextView
                 android:id="@+id/declined"
@@ -146,7 +157,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/interestedCount"
-                app:layout_constraintTop_toBottomOf="@+id/place" />
+                app:layout_constraintTop_toBottomOf="@+id/placeBtn" />
 
             <TextView
                 android:id="@+id/declinedCount"
@@ -157,7 +168,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/declined"
-                app:layout_constraintTop_toBottomOf="@+id/place" />
+                app:layout_constraintTop_toBottomOf="@+id/placeBtn" />
 
             <EditText
                 android:id="@+id/comments"
@@ -179,7 +190,7 @@
                 android:id="@+id/interestedBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/andika"
                 android:text="@string/join"

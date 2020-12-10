@@ -43,7 +43,7 @@ class CreateUserObject{
 
         val userName = view.findViewById<TextInputLayout>(R.id.userNameTextLayout).editText?.text.toString()
         SessionDtls.loggedInUser?.userName = userName
-        val emailStr = SessionDtls.loggedInUser?.emailAddress
+        val emailStr = view.findViewById<TextInputLayout>(R.id.emailAddressTextLayout).editText?.text.toString()
         val password = view.findViewById<TextInputLayout>(R.id.password).editText?.text.toString()
         val securityQuestion = view.findViewById<AppCompatSpinner>(R.id.securityQuestion)
         val securityQuestionStr = securityQuestion.getItemAtPosition(securityQuestion.selectedItemPosition).toString()

@@ -151,5 +151,11 @@
         <action
             android:id="@+id/action_showAllEvents_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_showAllEvents_to_create"
+            app:destination="@id/create" />
+        <action
+            android:id="@+id/action_showAllEvents_to_profile"
+            app:destination="@id/profile" />
     </fragment>
 </navigation>

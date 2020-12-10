@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letsplay.R
@@ -38,6 +39,14 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                System.exit(0)
+            }
+        })
+
+
         view.findViewById<Button>(R.id.sign_in_sign_up).setOnClickListener{
             val list = ArrayList<Int>()
             list.add(R.id.emailAddress)
@@ -62,8 +71,8 @@ class WelcomeFragment : Fragment() {
                                     findNavController().navigate(R.id.action_welcomeFragment_to_signIn)
                                 }
                             }
-
                         } else {
+                            SessionDtls.newUserEmailAddress = email
                             validator.createSuccessToast("New user. Kindly register to use the app.", requireContext())
                             findNavController().navigate(R.id.action_welcomeFragment_to_signUp)
                         }

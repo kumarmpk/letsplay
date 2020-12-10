@@ -48,11 +48,10 @@ class ForgotPassword : Fragment() {
         view.findViewById<Button>(R.id.reset).setOnClickListener{
 
             val list = ArrayList<Int>()
-            list.add(R.id.emailAddressTextLayout)
-            list.add(R.id.userNameTextLayout)
+            list.add(R.id.editTextTextEmailAddress)
 
             val spinnerList = ArrayList<Int>()
-            spinnerList.add(R.id.sport1)
+            spinnerList.add(R.id.securityQuestion)
 
             val list2 = ArrayList<Int>()
             list2.add(R.id.securityAnswer)
@@ -97,12 +96,12 @@ class ForgotPassword : Fragment() {
                             }
                         } else{
                             validation.createErrorToast("Security answer does not match with our records." +
-                                    "\n Kindly try again.", requireContext())
+                                    " Kindly try again.", requireContext())
                         }
 
                     } else{
                         validation.createErrorToast("Security question does not match with our records." +
-                                "\n Kindly try again.", requireContext())
+                                " Kindly try again.", requireContext())
                     }
 
                 } else{

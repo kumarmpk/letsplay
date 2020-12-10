@@ -63,13 +63,13 @@ class SignUp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var emailTextInputEditText = view.findViewById<TextInputEditText>(R.id.emailAddressEditText)
-        emailTextInputEditText?.setText(SessionDtls.loggedInUser?.emailAddress)
+        emailTextInputEditText?.setText(SessionDtls.newUserEmailAddress)
 
         view.findViewById<Button>(R.id.sign_up).setOnClickListener{
             val list = ArrayList<Int>()
+            list.add(R.id.userNameTextLayout)
             list.add(R.id.emailAddressTextLayout)
             list.add(R.id.password)
-            list.add(R.id.userNameTextLayout)
 
             val spinnerList = ArrayList<Int>()
             spinnerList.add(R.id.sport1)
@@ -86,6 +86,7 @@ class SignUp : Fragment() {
                 val createUser = CreateUserObject()
                 val user = createUser.createUserObjectFromView(view)
                 val emailStr = user.emailAddress
+                SessionDtls.loggedInUser = user
 
                 if (emailStr != null) {
                     FirebaseFirestore.getInstance().collection(Constants.COLLECTION_USERS)
@@ -98,6 +99,8 @@ class SignUp : Fragment() {
                             validator.createErrorToast("Registration failed. Kindly contact support team.", requireContext())
                             findNavController().navigate(R.id.action_signUp_to_welcomeFragment)
                         }
+                } else{
+                    validator.createErrorToast("Something went wrong. Kindly restart the app.", requireContext())
                 }
             }
         }

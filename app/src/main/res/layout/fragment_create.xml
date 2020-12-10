@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="30dp"
                 android:hint="@string/sport"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/andika"
                 android:text="@string/date"
                 android:textColor="#000000"
@@ -71,7 +71,7 @@
                 android:layout_width="123dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="8dp"
                 android:text="__________"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -82,9 +82,9 @@
             <Button
                 android:id="@+id/timeButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/andika"
                 android:text="@string/time"
                 android:textColor="#000000"
@@ -98,7 +98,7 @@
                 android:layout_width="123dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="64dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="8dp"
                 android:text="__________"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="@string/place"
@@ -131,6 +131,32 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/placeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Captures current location"
+                android:fontFamily="@font/andika"
+                android:text="Set Current Location"
+                android:textColor="#000000"
+                android:textColorHighlight="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/place"
+                app:layout_constraintTop_toBottomOf="@+id/place" />
+
+            <TextView
+                android:id="@+id/userMsg"
+                android:layout_width="123dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="64dp"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/placeButton" />
+
             <EditText
                 android:id="@+id/comments"
                 android:layout_width="match_parent"
@@ -139,12 +165,13 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textAlignment="viewStart"
+                android:hint="@string/comments"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/place"
-                app:layout_constraintTop_toBottomOf="@+id/place" />
+                app:layout_constraintStart_toEndOf="@+id/userMsg"
+                app:layout_constraintTop_toBottomOf="@+id/userMsg" />
 
             <Button
-                android:id="@+id/create"
+                android:id="@+id/createBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="75dp"
@@ -166,7 +193,7 @@
                 android:text="@string/cancel"
                 android:textColor="#000000"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/create"
+                app:layout_constraintStart_toEndOf="@+id/createBtn"
                 app:layout_constraintTop_toBottomOf="@+id/comments" />
 
             <ImageView
